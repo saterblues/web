@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    pad: 0;
+}
+
+#header{
+    height: 5vh;
+    background-color: aqua;
+}
+
+#aside{
+    min-height: 95vh;
+    background-color:rgb(84, 92, 100);
+    box-sizing: border-box;
+}
+
+#main-content{
+    height: 95vh;
+}
+
+#main-header{
+    border-bottom-width: 0.1em;
+    border-bottom-style: solid;
+    border-bottom-color: blueviolet;
+}
+
+#footer{
+    height: 10vh;
+    background-color: yellowgreen;
+    text-align: center;
+    line-height: 56px;
+}
+
+#logo{
+    text-align: center;
+    height: 56px;
+    line-height: 56px;
+    font-size: 14px;
+    color: white;
+}

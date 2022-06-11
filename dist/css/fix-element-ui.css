@@ -1,0 +1,19 @@
+.el-submenu .el-menu-item {
+    min-width: 0%;
+}
+
+.el-header{
+    padding: 0;
+}
+
+.el-menu{
+    border-right-width: 0;
+}
+
+.el-main {
+    padding: 0;
+}
+
+.el-tabs__header{
+    margin: 0;
+}

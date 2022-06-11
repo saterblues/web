@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>my Demo</title>
+  <link rel="stylesheet" href="lib/element-ui/theme-chalk/index.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/fix-element-ui.css">
+
+  <script src="lib/vue2.6.14/vue.js"></script>
+  <script src="lib/element-ui/element-ui2.15.8.js"></script>
+  <script src="lib/axios0.27.2/axios.js"></script>
+  <script src="lib/mockjs1.1.0/mock.js"></script>
+  <script src="lib/jquery/jquery.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    
+  </div>
+
+  <div id = "demo_app">
+    <el-pagination background layout="prev, pager, next" :total="total" 
+    :hide-on-single-page = "true"
+    :page-size.sync = "pageSize" @current-change = "pageChange">
+    </el-pagination>
+  </div>
+
+
+</body>
+<script>
+
+
+  function propertypet(){
+
+    let data = {
+      name:"liq",
+      age:16,
+      sex:true,
+      now:[1,2,3],
+      ok:{},
+      bbb:undefined
+    };
+    console.log(data);
+    for (const key in data) {
+      console.log(`key:` + key + ",type:" + typeof(data[key]));
+      if(typeof(data[key]) === 'string'){
+        console.log(key + " is string");
+      }
+    }
+  }
+
+
+  var MockWebApi = {
+    api0 : `/web/api`
+  };
+
+  Mock.setup({timeout: '200-600'});
+
+  function CreateMockData(){
+    return Mock.mock({
+      error: null,
+      'data|1-100': [{ id: '@id', name: '@name', address: '@region @province @city' }]
+    });
+  }
+
+  Mock.mock(MockWebApi.api0,'post',function(request){
+    let postData = JSON.parse(request.body);
+    return CreateMockData();
+
+  });
+
+
+  function siapost() {
+    axios.post(MockWebApi.pdd, {
+      uid: 'Fred',
+      token: 'Flintstone',
+      data: {
+        usernamme: "liq",
+        password: "666",
+        bigabiga: [1, 2, { wandan: 'bb' }]
+      }
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
+
+
+  var siaData =  {
+    name:'哈利波特',
+    total:21,
+    pageSize:10
+  };
+  var siaMethods = {
+    pageChange:function(e){console.log(e);},
+  };
+
+
+
+
+  var demoapp = new Vue({
+    el: '#demo_app',
+    data: siaData,
+    methods : siaMethods
+  });
+
+
+  
+
+</script>
+
+<script src="js/main.js"></script>
+
+
+</html>
